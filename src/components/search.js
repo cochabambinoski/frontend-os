@@ -9,6 +9,11 @@ export default function Search(){
         const responseJSON = await response.json()
     }
 
+    const addApi = async (pokemon,tipo) => {
+        const response = await fetch(`http://localhost:3000/api/post/{pokemon}&{tipo}`)
+        const responseJSON = await response.json()
+    }
+
     useEffect(()=>{
         urlp= responseJSON
     }, [])
@@ -17,6 +22,9 @@ export default function Search(){
         <div>
             <button onClick={() => setSearch(fetchApi(pokemon,tipo))}>
                 buscar
+            </button>
+            <button onClick={() => addApi(pokemon,tipo)}>
+                agregar
             </button>
             <image url={urlp}></image>
             <p>Busca tu pokemon</p>
